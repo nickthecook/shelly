@@ -22,8 +22,12 @@ actions:
     command: ops build && ops start && ops logs
     alias: bsl
   shell:
-    command: docker compose exec -u nickthecook shelly zsh
+    command: docker compose exec -u "$SSH_USER" shelly zsh
     alias: sh
+  login:
+    command: echo "$docker_token" | docker login -u "$docker_user" --password-stdin
+    load_secrets: true
+  push: docker push "$docker_user/shelly"
 options:
   environment:
     SSH_PUB_KEY: $(cat "$HOME/.ssh/id_ed25519.pub")
