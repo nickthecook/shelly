@@ -17,6 +17,8 @@ autoload -U compinit && compinit -u
 bindkey '[1;5C' forward-word
 bindkey '[1;5D' backward-word
 bindkey '[3~' delete-char
+bindkey  "^[[H"   beginning-of-line
+bindkey  "^[[F"   end-of-line
 
 # bind PgUp and PgDown to history-based completion
 autoload -U up-line-or-beginning-search
