@@ -1,0 +1,30 @@
+dependencies:
+  custom:
+    - ops pull
+actions:
+  start: docker compose up -d
+  stop: docker compose down
+  restart: docker compose restart
+  bounce: ops stop && ops start
+  logs:
+    command: docker compose logs --tail 100 -f
+    alias: l
+  start-with-logs:
+    command: ops start && ops logs
+    alias: sl
+  restart-with-logs:
+    command: ops restart && ops logs
+    alias: rl
+  build:
+    command: docker compose build
+    alias: b
+  build-and-run:
+    command: ops build && ops start && ops logs
+    alias: bsl
+  shell:
+    command: docker compose exec -u nickthecook shelly zsh
+    alias: sh
+options:
+  environment:
+    SSH_PUB_KEY: $(cat "$HOME/.ssh/id_ed25519.pub")
+    SSH_USER: nickthecook

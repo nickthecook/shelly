@@ -1,0 +1,7 @@
+services:
+  shelly:
+    build:
+      context: .
+      args:
+        SSH_PUB_KEY: ${SSH_PUB_KEY}
+        SSH_USER: ${SSH_USER}
