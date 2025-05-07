@@ -18,6 +18,7 @@ actions:
   build:
     command: docker compose build
     alias: b
+    load_secrets: true
   build-and-run:
     command: ops build && ops start && ops logs
     alias: bsl
@@ -27,7 +28,7 @@ actions:
   login:
     command: echo "$docker_token" | docker login -u "$docker_user" --password-stdin
     load_secrets: true
-  push: docker push "$docker_user/shelly"
+  push: docker compose push
 options:
   environment:
     SSH_PUB_KEY: $(cat "$HOME/.ssh/id_ed25519.pub")

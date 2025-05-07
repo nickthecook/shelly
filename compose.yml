@@ -5,4 +5,5 @@ services:
       args:
         SSH_PUB_KEY: ${SSH_PUB_KEY}
         SSH_USER: ${SSH_USER}
-    image: nickthecook/shelly
+        SSH_PASSWORD: ${SSH_PASSWORD}
+    image: nickthecook/shelly:latest
