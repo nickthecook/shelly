@@ -11,7 +11,6 @@ RUN apk add openssh zsh starship git sudo iproute2-ss vim bind-tools netcat-open
 
 # user
 RUN adduser -s /bin/zsh -D $SSH_USER \
-    && passwd -u nickthecook \
     && echo -e "$SSH_PASSWORD\n$SSH_PASSWORD" | passwd "$SSH_USER"
 
 WORKDIR /home/$SSH_USER
